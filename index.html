@@ -76,7 +76,11 @@ p{margin:.4em 0}
 .rush .sun{position:absolute;left:32%;top:31%;width:96px;height:96px;border-radius:50%;background:#ffcf3d;border:5px solid var(--ink);box-shadow:0 0 0 18px rgba(255,207,61,.35)}
 .rush .co2{position:absolute;font-family:Marker;font-size:32px;color:#fff;background:#8a8a8a;border:4px solid var(--ink);border-radius:40px;padding:8px 20px;animation:drift 4s linear infinite}
 .calm .girl{right:7%;bottom:12%;width:min(32vw,280px)}
-.calm .laptop{right:31%;bottom:23%;width:min(22vw,230px)}
+.calm .laptop{right:calc(30% + 22px);bottom:calc(14% + 118px);width:min(18vw,206px)}
+.calm .desk{position:absolute;right:30%;bottom:14%;width:min(23vw,250px);height:122px}
+.calm .desk::before{content:"";position:absolute;left:0;right:0;top:0;height:26px;background:#a8653a;border:5px solid var(--ink);border-radius:8px;z-index:1}
+.calm .desk::after,.calm .desk i{content:"";position:absolute;left:9%;top:20px;bottom:0;width:22px;background:#8a5230;border:5px solid var(--ink);border-top:0;border-radius:0 0 6px 6px}
+.calm .desk i{left:auto;right:9%}
 .calm .cat{right:2%;bottom:5%;width:min(18vw,150px)}
 .calm .window{position:absolute;right:34%;top:30%;width:150px;height:180px;background:#d6ecff;border:5px solid var(--ink);border-radius:14px;
   background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink));background-size:5px 100%,100% 5px;background-position:center;background-repeat:no-repeat}
@@ -87,7 +91,7 @@ p{margin:.4em 0}
 .clockchip i::after{height:11px;transform:translate(-50%,-100%) rotate(var(--m,0deg))}
 .rush .clockchip{left:18px;background:var(--rush);color:#fff;-webkit-text-stroke:1px var(--ink)}
 .calm .clockchip{right:18px;background:var(--calm)}
-.verdict{position:absolute;font-family:Hand;font-size:clamp(20px,2.6vw,26px);background:#fff;border:4px solid var(--ink);border-radius:20px;padding:8px 16px;max-width:240px;line-height:1.15;box-shadow:4px 4px 0 var(--ink)}
+.verdict{position:absolute;z-index:3;font-family:Hand;font-size:clamp(20px,2.6vw,26px);background:#fff;border:4px solid var(--ink);border-radius:20px;padding:8px 16px;max-width:240px;line-height:1.15;box-shadow:4px 4px 0 var(--ink)}
 .rush .verdict{left:4%;top:calc(env(safe-area-inset-top) + 96px);transform:rotate(-3deg)}
 .calm .verdict{right:4%;top:calc(env(safe-area-inset-top) + 96px);transform:rotate(2deg)}
 
@@ -220,8 +224,8 @@ footer{padding:60px 0 50px;background:var(--paper);border-top:5px solid var(--in
   .steps{grid-template-columns:1fr;gap:38px}
   .route{padding-left:78px}.route::before{left:22px}.route::after{left:31px}.route .runner{left:-6px;width:74px}.stop::before{left:-64px}
   .q{grid-template-columns:1fr}.q .seg{justify-self:start}
-  .rush .boy{width:34vw;left:5%;bottom:21%}.calm .girl{width:32vw;right:6%;bottom:21%}.calm .laptop,.calm .cat,.rush .car,.rush .sun,.calm .window,.rush .co2{display:none}
-  .verdict{top:calc(env(safe-area-inset-top) + 300px)!important;max-width:40%;font-size:16px;padding:6px 10px}
+  .rush .boy{width:min(34vw,210px);left:5%;bottom:21%}.calm .girl{width:min(32vw,196px);right:6%;bottom:21%}.calm .laptop,.calm .desk,.calm .cat,.rush .car,.rush .sun,.calm .window,.rush .co2{display:none}
+  .verdict{top:calc(env(safe-area-inset-top) + 212px + 14vw)!important;max-width:min(40%,250px);font-size:clamp(15px,2.4vw,20px);padding:6px 10px}
   .rush .verdict{left:3%}.calm .verdict{right:3%}
   .handle{top:66%;width:64px;height:64px}.hint{top:calc(66% + 44px)}
   .hero-cta{bottom:calc(env(safe-area-inset-bottom) + 16px)}
@@ -250,10 +254,10 @@ footer{padding:60px 0 50px;background:var(--paper);border-top:5px solid var(--in
     <img class="sprite boy" src="assets/img/boy_run.webp" alt="" />
   </div>
   <div class="world calm" aria-hidden="true">
-    <div class="window"></div>
     <div class="clockchip" style="--h:252deg;--m:150deg"><i></i>8:25 AM</div>
     <div class="verdict">Joined online. Five minutes to spare.</div>
     <div class="floor"></div>
+    <div class="desk"><i></i></div>
     <img class="sprite laptop" src="assets/img/laptop.webp" alt="" />
     <img class="sprite girl" src="assets/img/girl_coffee.webp" alt="" />
     <img class="sprite cat" src="assets/img/cat_sit.webp" alt="" />
