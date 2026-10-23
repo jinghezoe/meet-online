@@ -34,6 +34,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+html{overflow-x:clip}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 Nunito,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -61,8 +62,10 @@ p{margin:.4em 0}
 .btn svg{width:22px;height:22px}
 
 /* ---------- HERO: drag between two worlds ---------- */
+.hero img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
 .hero{position:relative;height:100svh;min-height:640px;max-height:980px;overflow:hidden;border-bottom:5px solid var(--ink);touch-action:pan-y;user-select:none}
-.world{position:absolute;inset:0}
+.world{position:absolute;inset:0;isolation:isolate}
+.world.calm{z-index:1}
 .world.rush{background:linear-gradient(#ff9a5a,#ffd2a0 70%)}
 .world.calm{background:linear-gradient(#e9e0ff,#f7f2ff 70%);clip-path:inset(0 0 0 var(--split,50%))}
 .world .floor{position:absolute;left:0;right:0;bottom:0;height:24%;border-top:5px solid var(--ink)}
@@ -523,10 +526,11 @@ const toast = (msg) => { const t = $('#toast'); t.textContent = msg; t.classList
     handle.setAttribute('aria-valuenow', Math.round(split));
   };
   const fromEvent = (e) => { const r = hero.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * 100; };
-  handle.addEventListener('pointerdown', (e) => { dragging = true; touched = true; hint.style.opacity = 0; handle.setPointerCapture(e.pointerId); });
+  handle.addEventListener('pointerdown', (e) => { e.preventDefault(); dragging = true; touched = true; hint.style.opacity = 0; handle.setPointerCapture(e.pointerId); });
   handle.addEventListener('pointermove', (e) => dragging && set(fromEvent(e)));
   handle.addEventListener('pointerup', () => (dragging = false));
-  hero.addEventListener('pointermove', (e) => { if (!dragging && e.pointerType === 'mouse' && touched) set(fromEvent(e)); });
+  handle.addEventListener('pointercancel', () => (dragging = false));
+  handle.addEventListener('lostpointercapture', () => (dragging = false));
   handle.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') { set(split - 5); touched = true; }
     if (e.key === 'ArrowRight') { set(split + 5); touched = true; }
@@ -537,9 +541,10 @@ const toast = (msg) => { const t = $('#toast'); t.textContent = msg; t.classList
     const t0 = performance.now();
     const step = (now) => {
       if (touched) return;
-      const t = now - t0;
-      let i = keys.findIndex(([k]) => k > t);
+      const t = Math.max(0, now - t0);
+      const i = keys.findIndex(([k]) => k > t);
       if (i === -1) { set(50); return; }
+      if (i === 0) { requestAnimationFrame(step); return; }
       const [ta, va] = keys[i - 1], [tb, vb] = keys[i];
       const p = (t - ta) / (tb - ta), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
       set(va + (vb - va) * e);
