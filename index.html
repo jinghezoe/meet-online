@@ -72,13 +72,13 @@ p{margin:.4em 0}
 .sprite{position:absolute;filter:drop-shadow(0 6px 0 rgba(29,29,27,.15))}
 .rush .boy{left:6%;bottom:12%;width:min(34vw,300px);animation:bob .36s steps(2) infinite}
 .rush .car{bottom:4%;width:min(40vw,330px)}
-.rush .car.c1{left:-6%}.rush .car.c2{left:30%;bottom:6%}
-.rush .sun{position:absolute;left:4%;top:12%;width:120px;height:120px;border-radius:50%;background:#ffcf3d;border:5px solid var(--ink);box-shadow:0 0 0 18px rgba(255,207,61,.35)}
+.rush .car.c1{left:-5%;bottom:3%}.rush .car.c2{display:none}
+.rush .sun{position:absolute;left:32%;top:31%;width:96px;height:96px;border-radius:50%;background:#ffcf3d;border:5px solid var(--ink);box-shadow:0 0 0 18px rgba(255,207,61,.35)}
 .rush .co2{position:absolute;font-family:Marker;font-size:32px;color:#fff;background:#8a8a8a;border:4px solid var(--ink);border-radius:40px;padding:8px 20px;animation:drift 4s linear infinite}
 .calm .girl{right:7%;bottom:12%;width:min(32vw,280px)}
-.calm .laptop{right:30%;bottom:9%;width:min(34vw,300px)}
+.calm .laptop{right:31%;bottom:23%;width:min(22vw,230px)}
 .calm .cat{right:2%;bottom:5%;width:min(18vw,150px)}
-.calm .window{position:absolute;right:8%;top:14%;width:150px;height:180px;background:#d6ecff;border:5px solid var(--ink);border-radius:14px;
+.calm .window{position:absolute;right:34%;top:30%;width:150px;height:180px;background:#d6ecff;border:5px solid var(--ink);border-radius:14px;
   background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(var(--ink),var(--ink));background-size:5px 100%,100% 5px;background-position:center;background-repeat:no-repeat}
 .clockchip{position:absolute;top:calc(env(safe-area-inset-top) + 18px);font-family:Marker;font-size:clamp(20px,3vw,30px);border:4px solid var(--ink);border-radius:var(--r-pill);padding:6px 18px 6px 14px;display:flex;gap:10px;align-items:center;box-shadow:4px 4px 0 var(--ink)}
 .clockchip i{width:28px;height:28px;border-radius:50%;border:4px solid var(--ink);background:#fff;position:relative}
@@ -88,8 +88,8 @@ p{margin:.4em 0}
 .rush .clockchip{left:18px;background:var(--rush);color:#fff;-webkit-text-stroke:1px var(--ink)}
 .calm .clockchip{right:18px;background:var(--calm)}
 .verdict{position:absolute;font-family:Hand;font-size:clamp(20px,2.6vw,26px);background:#fff;border:4px solid var(--ink);border-radius:20px;padding:8px 16px;max-width:240px;line-height:1.15;box-shadow:4px 4px 0 var(--ink)}
-.rush .verdict{left:5%;top:30%;transform:rotate(-3deg)}
-.calm .verdict{right:5%;top:30%;transform:rotate(2deg)}
+.rush .verdict{left:4%;top:calc(env(safe-area-inset-top) + 96px);transform:rotate(-3deg)}
+.calm .verdict{right:4%;top:calc(env(safe-area-inset-top) + 96px);transform:rotate(2deg)}
 
 .divider{position:absolute;top:0;bottom:0;left:var(--split,50%);width:0;z-index:5}
 .divider::before{content:"";position:absolute;top:0;bottom:0;left:-3px;width:6px;background:var(--ink)}
@@ -105,10 +105,10 @@ p{margin:.4em 0}
 .lockup h1{font-size:clamp(40px,8vw,84px)}
 .lockup h1 span{display:block}
 .lockup h1 .two{color:var(--rush);-webkit-text-stroke:2px var(--ink)}
-.hero-cta{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 26%);z-index:6;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:0 16px}
+.hero-cta{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 5%);z-index:6;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:0 16px}
 
 @keyframes bob{50%{transform:translateY(-8px)}}
-@keyframes drift{from{transform:translate(0,0) scale(.8);opacity:0}15%{opacity:1}to{transform:translate(-60px,-160px) scale(1.2);opacity:0}}
+@keyframes drift{from{transform:translate(0,0) scale(.8);opacity:0}15%{opacity:1}to{transform:translate(-40px,-90px) scale(1.15);opacity:0}}
 
 /* ---------- sections ---------- */
 section{padding:clamp(70px,10vw,120px) 0;position:relative}
@@ -220,11 +220,11 @@ footer{padding:60px 0 50px;background:var(--paper);border-top:5px solid var(--in
   .steps{grid-template-columns:1fr;gap:38px}
   .route{padding-left:78px}.route::before{left:22px}.route::after{left:31px}.route .runner{left:-6px;width:74px}.stop::before{left:-64px}
   .q{grid-template-columns:1fr}.q .seg{justify-self:start}
-  .rush .boy{width:42vw;bottom:16%}.calm .girl{width:40vw;bottom:16%}.calm .laptop{display:none}
-  .rush .car.c2{display:none}.rush .car.c1{width:62vw;left:-14%}
-  .calm .window{display:none}
-  .verdict{top:auto!important;bottom:calc(16% + 46vw);max-width:44vw;font-size:18px}
-  .hero-cta{bottom:calc(env(safe-area-inset-bottom) + 18px)}
+  .rush .boy{width:34vw;left:5%;bottom:21%}.calm .girl{width:32vw;right:6%;bottom:21%}.calm .laptop,.calm .cat,.rush .car,.rush .sun,.calm .window,.rush .co2{display:none}
+  .verdict{top:calc(env(safe-area-inset-top) + 300px)!important;max-width:40%;font-size:16px;padding:6px 10px}
+  .rush .verdict{left:3%}.calm .verdict{right:3%}
+  .handle{top:66%;width:64px;height:64px}.hint{top:calc(66% + 44px)}
+  .hero-cta{bottom:calc(env(safe-area-inset-bottom) + 16px)}
   .hero-cta .btn{padding:14px 20px;font-size:17px}
   .insight{grid-template-columns:1fr}.insight img{width:120px}
   .champ{grid-template-columns:1fr}
@@ -240,11 +240,10 @@ footer{padding:60px 0 50px;background:var(--paper);border-top:5px solid var(--in
 <!-- ================= HERO ================= -->
 <header class="hero" id="hero" aria-label="Same meeting, two ways to get there">
   <div class="world rush" aria-hidden="true">
-    <div class="sun"></div>
     <div class="clockchip" style="--h:272deg;--m:30deg"><i></i>9:05 AM</div>
     <div class="verdict">Drove in. Two hours on the road. Meeting's over.</div>
-    <span class="co2" style="left:28%;top:56%">CO2</span>
-    <span class="co2" style="left:52%;top:62%;animation-delay:1.6s">CO2</span>
+    <span class="co2" style="left:30%;top:58%">CO2</span>
+    <span class="co2" style="left:37%;top:66%;animation-delay:1.6s">CO2</span>
     <div class="floor"></div>
     <img class="sprite car c1" src="assets/img/car_blue.webp" alt="" />
     <img class="sprite car c2" src="assets/img/car_green.webp" alt="" />
